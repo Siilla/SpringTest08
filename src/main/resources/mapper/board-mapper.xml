@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rubypaper.board.persistence.BoardDao">
+
+<insert id="insert" parameterType="com.rubypaper.board.domain.BoardVO">
+	<![CDATA[
+		insert into board1026 (seq, title, writer, content, createDate, cnt) 
+		values (seqboard1026.nextval, #{title}, #{writer}, #{content}, #{createDate} , #{cnt} )
+	]]>
+</insert>
+	
+<update id="update" parameterType="com.rubypaper.board.domain.BoardVO">
+	<![CDATA[
+		update board1026 set title=#{title}, writer=#{writer}, content=#{content} 
+		where seq=#{seq}
+	]]>
+</update>
+
+<delete id="delete" parameterType="com.rubypaper.board.domain.BoardVO">
+	delete from board1026 where seq=#{seq}
+</delete>
+
+<update id="cnt" parameterType="com.rubypaper.board.domain.BoardVO">
+	<![CDATA[
+		update board1026 set cnt=cnt+1 
+		where seq=#{seq}
+	]]>
+</update>
+
+<select id="getBoard" parameterType="com.rubypaper.board.domain.BoardVO" resultType="com.rubypaper.board.domain.BoardVO">
+	<![CDATA[
+		select * from board1026 where seq=#{seq}
+	]]>
+</select>
+
+<select id="getBoardList" parameterType="com.rubypaper.board.domain.BoardVO" resultType="com.rubypaper.board.domain.BoardVO">
+	<![CDATA[
+		select * from board1026
+	]]>
+</select>
+
+<delete id="deleteWriter" parameterType="com.rubypaper.board.domain.BoardVO">
+	delete from board1026 where writer=#{writer}
+</delete>
+</mapper>

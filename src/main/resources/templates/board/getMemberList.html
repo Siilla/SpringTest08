@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+<h2>회원 목록보기 <a th:href="@{/index.html}">( 처음으로 )</a> </h2>
+<font color="red" th:text="${session['member'].name}" ></font> <a th:href="@{/system/logout.do}">Log_out</a>
+<br>
+<table border=1>
+	<tr align="center">
+		<th>순번</th>
+		<th>아이디(삭제)</th>
+		<th>비밀번호</th>
+		<th>이름</th>
+		<th>권한</th>
+		<th>사용가능</th>
+	</tr> 
+	<tr align="center" th:each="m, state : ${li}">
+		<td th:text="${state.count}"></td>
+		<td><a th:href="@{/board/delete.do(id=${m.id},writer=${m.id})}" th:text="${m.id}"></a></td>
+		<td th:text="${m.password}"></td>
+		<td th:text="${m.name}"></td>
+		<td th:text="${m.role}"></td>
+		<td th:text="${m.enabled}"></td>
+	</tr>
+</table>
+<br>
+<a th:href="@{/board/insertBoard}"> 새글 등록 </a>
+</div>
+</body>
+</html>
